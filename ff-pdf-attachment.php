@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/your-repo/ff-pdf-attachment
  * Description: Hängt automatisch ein kompaktes PDF mit allen Formulardaten an Fluent Forms E-Mail-Benachrichtigungen an. Keine externen Abhängigkeiten.
  * Version: 2.1.0
- * Author: Custom
+ * Author: Michael Kanda
  * License: GPL-2.0+
  * Text Domain: ff-pdf-attachment
  * Requires at least: 5.6
