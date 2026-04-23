@@ -38,3 +38,9 @@ Dieses Projekt steht unter der [GPLv2](https://www.gnu.org/licenses/gpl-2.0.html
 
 ---
 *Entwickelt für maximale Performance und minimale Serverlast.*
+
+----------------------------------
+Developed with ❤️ by Michael Kanda
+https://designare.at
+
+
