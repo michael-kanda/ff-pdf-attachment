@@ -3,7 +3,7 @@
  * Plugin Name: FF PDF Attachment
  * Plugin URI: https://github.com/michael-kanda/ff-pdf-attachment/
  * Description: Hängt automatisch ein kompaktes PDF mit allen Formulardaten an Fluent Forms E-Mail-Benachrichtigungen an. Keine externen Abhängigkeiten.
- * Version: 2.1.0
+ * Version: 2.1.1
  * Author: Michael Kanda
  * License: GPL-2.0+
  * Text Domain: ff-pdf-attachment
@@ -15,11 +15,17 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('FF_PDF_ATT_VERSION', '2.1.0');
+// Schutz vor Doppel-Laden (z.B. alter Plugin-Ordner noch aktiv): dann nichts tun.
+if (defined('FF_PDF_ATT_VERSION') || class_exists('FF_PDF_Attachment', false)) {
+    return;
+}
+
+define('FF_PDF_ATT_VERSION', '2.1.1');
 define('FF_PDF_ATT_PATH', plugin_dir_path(__FILE__));
 
 require_once FF_PDF_ATT_PATH . 'includes/class-simple-pdf.php';
 
+if (!class_exists('FF_PDF_Attachment', false)) {
 class FF_PDF_Attachment
 {
     const EXCLUDED_PREFIXES = [
@@ -86,7 +92,7 @@ class FF_PDF_Attachment
 
     private static function generate_pdf($data, $form)
     {
-        $pdf = new SimplePDF();
+        $pdf = new FF_PDF_Simple_PDF();
 
         $color = get_option('ff_pdf_primary_color', '#2563eb');
         if (!empty($color)) {
@@ -474,6 +480,7 @@ class FF_PDF_Attachment
         <?php
     }
 }
+} // class_exists
 
 add_action('plugins_loaded', function () {
     if (defined('FLUENTFORM') || defined('FLUENTFORM_VERSION')) {

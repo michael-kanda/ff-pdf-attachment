@@ -14,7 +14,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class SimplePDF
+if (!class_exists('FF_PDF_Simple_PDF', false)) {
+
+class FF_PDF_Simple_PDF
 {
     private $objects = [];
     private $objectCount = 0;
@@ -478,3 +480,5 @@ class SimplePDF
         return $output;
     }
 }
+
+} // class_exists
