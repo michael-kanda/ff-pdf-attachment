@@ -96,6 +96,8 @@ class FF_PDF_Attachment
         $pdf->addPage();
 
         $form_title = isset($form->title) ? $form->title : 'Formular';
+        // Zusatz "(10 Personen)" o. Ä. aus dem Formulartitel entfernen (wirkt irreführend)
+        $form_title = trim(preg_replace('/\s*\(\s*\d+\s*Personen\s*\)/iu', '', $form_title));
         $site_name  = get_bloginfo('name');
         $date       = wp_date('d.m.Y \u\m H:i \U\h\r');
 
@@ -144,7 +146,7 @@ class FF_PDF_Attachment
         $pdf->addFooter('Generiert von ' . $site_name . '  |  Formular #' . intval($form->id));
 
         // Speichern
-        $safe_title = sanitize_file_name($form->title ?? 'formular');
+        $safe_title = sanitize_file_name($form_title ?: 'formular');
         $filename   = substr($safe_title, 0, 50) . '_' . wp_date('Y-m-d_H-i-s') . '_' . wp_rand(1000, 9999) . '.pdf';
 
         $upload_dir = wp_upload_dir();
