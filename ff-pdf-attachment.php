@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: FF PDF Attachment
- * Plugin URI: https://github.com/your-repo/ff-pdf-attachment
+ * Plugin URI: https://github.com/michael-kanda/ff-pdf-attachment/
  * Description: Hängt automatisch ein kompaktes PDF mit allen Formulardaten an Fluent Forms E-Mail-Benachrichtigungen an. Keine externen Abhängigkeiten.
  * Version: 2.1.0
  * Author: Michael Kanda
